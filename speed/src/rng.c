@@ -21,7 +21,7 @@
 #include "widynski.h"
 #include "aesdragontamer.h"
 #include "wyhash.h"
-
+#include "zibri128.h"
 
 #ifndef __x86_64__
 #warning "Expecting an x64 processor."
@@ -40,10 +40,10 @@ const char *our32name[NUMBEROF32] = {
 
 #define NUMBEROF64 10
 rand64fnc our64[NUMBEROF64] = {aesdragontamer, aesctr,           lehmer64,   xorshift128plus,
-                               xoroshiro128plus, splitmix64, pcg64, xorshift1024star, xorshift1024plus, wyhash64};
+                               xoroshiro128plus, splitmix64, pcg64, xorshift1024star, xorshift1024plus, wyhash64, zibri128};
 const char *our64name[NUMBEROF64] = {"aesdragontamer","aesctr",          "lehmer64",
                                      "xorshift128plus", "xoroshiro128plus",
-                                     "splitmix64",      "pcg64", "xorshift1024star", "xorshift1024plus", "wyhash64"};
+                                     "splitmix64",      "pcg64", "xorshift1024star", "xorshift1024plus", "wyhash64", "zibri128"};
 
 void populate32(rand32fnc rand, uint32_t *answer, size_t size) {
   for (size_t i = size; i != 0; i--) {
